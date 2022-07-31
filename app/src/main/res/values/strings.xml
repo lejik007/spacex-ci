@@ -1,0 +1,10 @@
+<resources>
+    <!-- App's layout -->
+    <string name="app_name">SpaceX</string>
+    <string name="launch_general_info_fragment">General Info</string>
+    <string name="launch_detail_info_fragment">Detail Info</string>
+    <!-- Buttons -->
+    <string name="get_info">Get Info</string>
+    <string name="forward">Next</string>
+    <string name="backward">Back</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/launchGeneralInfoFragment">
+
+    <fragment
+        android:id="@+id/launchGeneralInfoFragment"
+        android:name="com.lejik.spacex.ui.fragments.launchgeneralinfo.LaunchGeneralInfoFragment"
+        android:label="LaunchGeneralInfoFragment" >
+        <action
+            android:id="@+id/action_launchGeneralInfoFragment_to_launchDetailInfoFragment"
+            app:destination="@id/launchDetailInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/launchDetailInfoFragment"
+        android:name="com.lejik.spacex.ui.fragments.launchdetailsinfo.LaunchDetailInfoFragment"
+        android:label="LaunchDetailInfoFragment" >
+        <action
+            android:id="@+id/action_launchDetailInfoFragment_to_launchGeneralInfoFragment"
+            app:destination="@id/launchGeneralInfoFragment" />
+    </fragment>
+</navigation>
