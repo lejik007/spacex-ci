@@ -7,39 +7,41 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.lejik.spacex.R
+import com.lejik.spacex.databinding.LaunchDetailInfoFragmentBinding
 
 class LaunchDetailInfoFragment : Fragment() {
-    private lateinit var backButton: Button
-    private lateinit var nextButton: Button
-    private lateinit var textDetailInfo: TextView
+    private var _binding: LaunchDetailInfoFragmentBinding? = null
+    private val binding: LaunchDetailInfoFragmentBinding
+        get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(
-            R.layout.launch_detail_info_fragment,
-            container,
-            false
-        )
+        _binding = LaunchDetailInfoFragmentBinding.inflate(inflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        backButton = view.findViewById(R.id.backButton)
-        nextButton = view.findViewById(R.id.nextButton)
-        textDetailInfo = view.findViewById(R.id.textDetailInfo)
+//        backButton = view.findViewById(R.id.backButton)
+//        nextButton = view.findViewById(R.id.nextButton)
+//        textDetailInfo = view.findViewById(R.id.textDetailInfo)
 
-        backButton.setOnClickListener() {
+        binding.backButton.setOnClickListener() {
             findNavController().navigate(R.id.action_launchDetailInfoFragment_to_launchGeneralInfoFragment)
         }
 
-        nextButton.setOnClickListener() {
+        binding.nextButton.setOnClickListener() {
             findNavController().navigate(R.id.action_launchDetailInfoFragment_to_launchRecyclerFragment)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

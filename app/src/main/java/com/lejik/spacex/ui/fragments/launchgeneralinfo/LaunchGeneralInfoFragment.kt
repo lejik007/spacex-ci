@@ -27,6 +27,11 @@ class LaunchGeneralInfoFragment : Fragment() {
     private val binding: LaunchGeneralInfoFragmentBinding
         get() = _binding!!
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
