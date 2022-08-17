@@ -11,6 +11,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import coil.load
@@ -45,6 +47,8 @@ class LaunchGeneralInfoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var count = 0
         var countMission = 0
+//        var _photos = MutableLiveData<Docs>()
+//        val photos: LiveData<Docs> = _photos!!
         var photos: List<Docs>? = null
         lifecycleScope.launchWhenResumed {
             try {
@@ -56,7 +60,8 @@ class LaunchGeneralInfoFragment : Fragment() {
 
 //            Moshi
                 Log.d("Отслеживание", "Подключение к сайту")
-                photos = ApiService.create().getPhotos()
+                photos = ApiService.create().getPhotos() // for List<Docs>
+//                _photos = ApiService.create().getPhotos() // for LiveData
                 countMission = photos!!.size
                 Log.d("Отслеживание", "val photos = ApiObject.retrofitService.getPhotos(): ${photos}")
 //                textGeneralInfo.text = photos.toString()

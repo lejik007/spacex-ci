@@ -1,5 +1,6 @@
 package com.lejik.spacex.network
 
+import androidx.lifecycle.MutableLiveData
 import com.lejik.spacex.model.Docs
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -12,6 +13,7 @@ import retrofit2.http.GET
 
 interface ApiService {
     @GET("launches")
+//    suspend fun getPhotos(): MutableLiveData<Docs>
     suspend fun getPhotos(): List<Docs>
 //    suspend fun getPhotos(): String
 //    fun getPhotos(): Call<String>

@@ -16,7 +16,6 @@ import com.lejik.spacex.data.DataSource
 import com.lejik.spacex.databinding.LaunchRecyclerFragmentBinding
 
 class LaunchRecyclerFragment : Fragment() {
-
     private var _binding: LaunchRecyclerFragmentBinding? = null
     private val binding: LaunchRecyclerFragmentBinding
         get() = _binding!!
@@ -27,7 +26,6 @@ class LaunchRecyclerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = LaunchRecyclerFragmentBinding.inflate(inflater)
-
         return binding.root
     }
 
