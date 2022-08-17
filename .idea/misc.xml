@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projects/Android/Kotlin/spacex/app/src/main/res/drawable/ic_connection_error.xml" value="0.1305" />
         <entry key="..\:/Projects/Android/Kotlin/spacex/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Projects/Android/Kotlin/spacex/app/src/main/res/layout/item_layout.xml" value="0.2105978260869565" />
         <entry key="..\:/Projects/Android/Kotlin/spacex/app/src/main/res/layout/launch_detail_info_fragment.xml" value="0.24818840579710144" />
-        <entry key="..\:/Projects/Android/Kotlin/spacex/app/src/main/res/layout/launch_general_info_fragment.xml" value="0.24818840579710144" />
+        <entry key="..\:/Projects/Android/Kotlin/spacex/app/src/main/res/layout/launch_general_info_fragment.xml" value="0.264" />
+        <entry key="..\:/Projects/Android/Kotlin/spacex/app/src/main/res/layout/launch_recycler_fragment.xml" value="0.2105978260869565" />
         <entry key="..\:/Projects/Android/Kotlin/spacex/app/src/main/res/layout/launchgeneralinfo_fragment.xml" value="0.24818840579710144" />
+        <entry key="..\:/Projects/Android/Kotlin/spacex/app/src/main/res/layout/res_items.xml" value="0.2105978260869565" />
       </map>
     </option>
   </component>

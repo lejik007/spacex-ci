@@ -19,5 +19,17 @@
         <action
             android:id="@+id/action_launchDetailInfoFragment_to_launchGeneralInfoFragment"
             app:destination="@id/launchGeneralInfoFragment" />
+        <action
+            android:id="@+id/action_launchDetailInfoFragment_to_launchRecyclerFragment"
+            app:destination="@id/launchRecyclerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/launchRecyclerFragment"
+        android:name="com.lejik.spacex.ui.fragments.recycler.LaunchRecyclerFragment"
+        android:label="LaunchRecyclerFragment" >
+        <action
+            android:id="@+id/action_launchRecyclerFragment_to_launchGeneralInfoFragment"
+            app:destination="@id/launchGeneralInfoFragment" />
     </fragment>
 </navigation>

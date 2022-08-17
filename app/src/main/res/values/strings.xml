@@ -3,8 +3,21 @@
     <string name="app_name">SpaceX</string>
     <string name="launch_general_info_fragment">General Info</string>
     <string name="launch_detail_info_fragment">Detail Info</string>
+    <string name="launch_recycler_fragment">Detail Info</string>
     <!-- Buttons -->
     <string name="get_info">Get Info</string>
     <string name="forward">Next</string>
     <string name="backward">Back</string>
+    <string name="escape">Escape</string>
+    <!-- Strings for recycler -->
+    <string name="res0">res0</string>
+    <string name="res1">res1</string>
+    <string name="res2">res2</string>
+    <string name="res3">res3</string>
+    <string name="res4">res4</string>
+    <string name="res5">res5</string>
+    <string name="res6">res6</string>
+    <string name="res7">res7</string>
+    <string name="res8">res8</string>
+    <string name="res9">res9</string>
 </resources>

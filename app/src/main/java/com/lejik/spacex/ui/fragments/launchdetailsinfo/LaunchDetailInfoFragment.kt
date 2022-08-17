@@ -8,10 +8,12 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import com.lejik.spacex.R
 
 class LaunchDetailInfoFragment : Fragment() {
     private lateinit var backButton: Button
+    private lateinit var nextButton: Button
     private lateinit var textDetailInfo: TextView
 
     override fun onCreateView(
@@ -29,10 +31,15 @@ class LaunchDetailInfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         backButton = view.findViewById(R.id.backButton)
+        nextButton = view.findViewById(R.id.nextButton)
         textDetailInfo = view.findViewById(R.id.textDetailInfo)
-        val navController = NavHostFragment.findNavController(this)
+
         backButton.setOnClickListener() {
-            navController.navigate(R.id.action_launchDetailInfoFragment_to_launchGeneralInfoFragment)
+            findNavController().navigate(R.id.action_launchDetailInfoFragment_to_launchGeneralInfoFragment)
+        }
+
+        nextButton.setOnClickListener() {
+            findNavController().navigate(R.id.action_launchDetailInfoFragment_to_launchRecyclerFragment)
         }
     }
 }
