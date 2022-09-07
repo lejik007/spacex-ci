@@ -1,6 +1,5 @@
 package com.lejik.spacex.network
 
-import androidx.lifecycle.MutableLiveData
 import com.lejik.spacex.model.Docs
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -11,9 +10,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
-interface ApiService {
+interface ApiServiceLaunches {
     @GET("launches")
-//    suspend fun getPhotos(): MutableLiveData<Docs>
+//    suspend fun getPhotos(): MutableLiveData<List<Docs>>
     suspend fun getPhotos(): List<Docs>
 //    suspend fun getPhotos(): String
 //    fun getPhotos(): Call<String>
@@ -21,7 +20,7 @@ interface ApiService {
     companion object {
         private const val BASE_URL = "https://api.spacexdata.com/v4/"
 
-        fun create() : ApiService {
+        fun create() : ApiServiceLaunches {
             val logger = HttpLoggingInterceptor()
             logger.level = Level.BASIC
             val client = OkHttpClient.Builder()
@@ -35,7 +34,7 @@ interface ApiService {
                 .client(client)
                 .addConverterFactory(MoshiConverterFactory.create(moshi))
                 .build()
-                .create(ApiService::class.java)
+                .create(ApiServiceLaunches::class.java)
             return retrofit
         }
     }
@@ -43,7 +42,7 @@ interface ApiService {
 
 /*
 *
-interface ApiService {
+interface ApiServiceLaunches {
     @GET("launches")
     suspend fun getPhotos(): List<Docs>
 //    suspend fun getPhotos(): String
@@ -63,7 +62,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 object ApiObject {
-    val retrofitService: ApiService by lazy {
-        retrofit.create(ApiService::class.java)
+    val retrofitService: ApiServiceLaunches by lazy {
+        retrofit.create(ApiServiceLaunches::class.java)
     }
 }*/

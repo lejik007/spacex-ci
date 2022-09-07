@@ -1,13 +1,12 @@
 package com.lejik.spacex.model
 
-import android.telecom.Call
 import com.google.gson.annotations.SerializedName
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
-import kotlinx.serialization.SerialName
 
 //@JsonClass(generateAdapter = true)
 data class Docs(
+    @SerializedName("id") // 'id' is equal to 'launches' in the DataModelCrew
+//    @Json(name = "id")
+    val id: String?,
     @SerializedName("links")
 //    @Json(name = "links")
     val links: Links?,
@@ -20,6 +19,9 @@ data class Docs(
     @SerializedName("success")
 //    @Json(name = "success")
     val success: Boolean?,
+    @SerializedName("crew")
+//    @Json(name = "crew")
+    val crew: List<String>?,
     @SerializedName("date_utc")
 //    @Json(name = "date_utc")
     val date_utc: String?,
@@ -39,7 +41,10 @@ data class Links(
 data class Patch(
     @SerializedName("small")
 //    @Json(name = "small")
-    val small: String?
+    val small: String?,
+    @SerializedName("large")
+//    @Json(name = "large")
+    val large: String?
 )
 
 //@JsonClass(generateAdapter = true)

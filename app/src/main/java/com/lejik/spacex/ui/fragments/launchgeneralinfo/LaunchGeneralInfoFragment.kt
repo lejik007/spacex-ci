@@ -1,38 +1,25 @@
 package com.lejik.spacex.ui.fragments.launchgeneralinfo
 
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import coil.load
 import com.lejik.spacex.R
 import com.lejik.spacex.databinding.LaunchGeneralInfoFragmentBinding
-import com.lejik.spacex.databinding.LaunchRecyclerFragmentBinding
 import com.lejik.spacex.model.Docs
-import com.lejik.spacex.network.ApiService
-import com.squareup.picasso.Picasso
+import com.lejik.spacex.network.ApiServiceLaunches
 import java.lang.Exception
 
 class LaunchGeneralInfoFragment : Fragment() {
     private var _binding: LaunchGeneralInfoFragmentBinding? = null
     private val binding: LaunchGeneralInfoFragmentBinding
         get() = _binding!!
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +28,11 @@ class LaunchGeneralInfoFragment : Fragment() {
     ): View {
         _binding = LaunchGeneralInfoFragmentBinding.inflate(inflater)
         return binding.root
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,30 +51,33 @@ class LaunchGeneralInfoFragment : Fragment() {
 //                textGeneralInfo.text = photos.toString()
 
 //            Moshi
-                Log.d("Отслеживание", "Подключение к сайту")
-                photos = ApiService.create().getPhotos() // for List<Docs>
-//                _photos = ApiService.create().getPhotos() // for LiveData
+                Log.d("Отслеживание (общая информация)", "Подключение к сайту")
+                photos = ApiServiceLaunches.create().getPhotos() // for List<Docs>
+//                _photos = ApiServiceLaunches.create().getPhotos() // for LiveData
                 countMission = photos!!.size
-                Log.d("Отслеживание", "val photos = ApiObject.retrofitService.getPhotos(): ${photos}")
+                Log.d("Отслеживание (общая информация)", "val photos = ApiObject.retrofitService.getPhotos(): ${photos}")
 //                textGeneralInfo.text = photos.toString()
-                binding.textDateUtc.text = photos?.getOrNull(count)?.date_utc
-                binding.textIcon.text  = photos?.getOrNull(count)?.links?.patch?.small.toString()
-                binding.textName.text  = photos?.getOrNull(count)?.name.toString()
-                binding.textRepeatedFlight.text = photos?.getOrNull(count)?.cores.toString()
-                binding.textMissionStatus.text = photos?.getOrNull(count)?.success.toString()
-                binding.imageIcon.load(
-                    photos?.getOrNull(count)?.links?.patch?.small
-                        .toString().toUri().buildUpon().scheme("https").build()
-                ) {
-                    placeholder(R.drawable.loading_animation)
-                    error(R.drawable.ic_broken_image)
+                binding.apply {
+                    textDateUtc.text = photos?.getOrNull(count)?.date_utc.toString()
+                    textIcon.text  = photos?.getOrNull(count)?.links?.patch?.small.toString()
+                    textName.text  = photos?.getOrNull(count)?.name.toString()
+                    textRepeatedFlight.text = photos?.getOrNull(count)?.cores.toString()
+                    textMissionStatus.text = photos?.getOrNull(count)?.success.toString()
+                    imageIcon.load(
+                        photos?.getOrNull(count)?.links?.patch?.small
+                            .toString().toUri().buildUpon().scheme("https").build()
+                    ) {
+                        placeholder(R.drawable.loading_animation)
+                        error(R.drawable.ic_broken_image)
+                    }
                 }
+
 //                Picasso.get()
 //                    .load(photos?.getOrNull(count)?.links?.patch?.small.toString())
 //                    .into(imageIcon);
 //                imageIcon.setImageURI(Uri.parse(photos?.getOrNull(count)?.links?.patch?.small.toString()))
             } catch (e: Exception) {
-                Log.d("Отслеживание", e.message.toString())
+                Log.d("Отслеживание (общая информация)", e.message.toString())
             }
         }
 /*  Без корутин
@@ -98,53 +93,60 @@ class LaunchGeneralInfoFragment : Fragment() {
 
         })*/
         val navController = NavHostFragment.findNavController(this)
-        binding.nextButton.setOnClickListener() {
-            navController.navigate(R.id.action_launchGeneralInfoFragment_to_launchDetailInfoFragment)
-        }
-        binding.imageIcon.setOnClickListener() {
-            navController.navigate(R.id.action_launchGeneralInfoFragment_to_launchDetailInfoFragment)
-        }
-        binding.missionNextButton.setOnClickListener() {
-            if (count < countMission) {
-                count++
+        binding.apply {
+            nextButton.setOnClickListener() {
+                navController.navigate(R.id.action_launchGeneralInfoFragment_to_launchDetailInfoFragment)
             }
-            binding.textDateUtc.text = photos?.getOrNull(count)?.date_utc
-            binding.textIcon.text  = photos?.getOrNull(count)?.links?.patch?.small.toString()
-            binding.textName.text  = photos?.getOrNull(count)?.name.toString()
-            binding.textRepeatedFlight.text = photos?.getOrNull(count)?.cores.toString()
-            binding.textMissionStatus.text = photos?.getOrNull(count)?.success.toString()
-            binding.imageIcon.load(
-                photos?.getOrNull(count)?.links?.patch?.small
-                    .toString().toUri().buildUpon().scheme("https").build()
-            ) {
-                placeholder(R.drawable.loading_animation)
-                error(R.drawable.ic_broken_image)
+            imageIcon.setOnClickListener() {
+                navController.navigate(R.id.action_launchGeneralInfoFragment_to_launchDetailInfoFragment)
             }
+            missionNextButton.setOnClickListener() {
+                if (count < countMission) {
+                    count++
+                }
+                textDateUtc.text = photos?.getOrNull(count)?.date_utc
+                textIcon.text  = photos?.getOrNull(count)?.links?.patch?.small.toString()
+                textName.text  = photos?.getOrNull(count)?.name.toString()
+                textRepeatedFlight.text = photos?.getOrNull(count)?.cores.toString()
+                textMissionStatus.text = photos?.getOrNull(count)?.success.toString()
+                imageIcon.load(
+                    photos?.getOrNull(count)?.links?.patch?.small
+                        .toString().toUri().buildUpon().scheme("https").build()
+                ) {
+                    placeholder(R.drawable.loading_animation)
+                    error(R.drawable.ic_broken_image)
+                }
 //            Picasso.get()
 //                .load(photos?.getOrNull(count)?.links?.patch?.small.toString())
 //                .into(imageIcon);
 //            imageIcon.setImageURI(Uri.parse(photos?.getOrNull(count)?.links?.patch?.small.toString()))
-        }
-        binding.missionPreviousButton.setOnClickListener() {
-            if (count > 0) {
-                count--
             }
-            binding.textDateUtc.text = photos?.getOrNull(count)?.date_utc
-            binding.textIcon.text  = photos?.getOrNull(count)?.links?.patch?.small.toString()
-            binding.textName.text  = photos?.getOrNull(count)?.name.toString()
-            binding.textRepeatedFlight.text = photos?.getOrNull(count)?.cores.toString()
-            binding.textMissionStatus.text = photos?.getOrNull(count)?.success.toString()
-            binding.imageIcon.load(
-                photos?.getOrNull(count)?.links?.patch?.small
-                    .toString().toUri().buildUpon().scheme("https").build()
-            ) {
-                placeholder(R.drawable.loading_animation)
-                error(R.drawable.ic_broken_image)
-            }
+            missionPreviousButton.setOnClickListener() {
+                if (count > 0) {
+                    count--
+                }
+                textDateUtc.text = photos?.getOrNull(count)?.date_utc
+                textIcon.text  = photos?.getOrNull(count)?.links?.patch?.small.toString()
+                textName.text  = photos?.getOrNull(count)?.name.toString()
+                textRepeatedFlight.text = photos?.getOrNull(count)?.cores.toString()
+                textMissionStatus.text = photos?.getOrNull(count)?.success.toString()
+                imageIcon.load(
+                    photos?.getOrNull(count)?.links?.patch?.small
+                        .toString().toUri().buildUpon().scheme("https").build()
+                ) {
+                    placeholder(R.drawable.loading_animation)
+                    error(R.drawable.ic_broken_image)
+                }
 //            Picasso.get()
 //                .load(photos?.getOrNull(count)?.links?.patch?.small.toString())
 //                .into(imageIcon);
 //            imageIcon.setImageURI(Uri.parse(photos?.getOrNull(count)?.links?.patch?.small.toString()))
+            }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

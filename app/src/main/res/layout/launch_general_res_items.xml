@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center|top"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textGeneralInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/labelIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Icon:"
+        app:layout_constraintStart_toStartOf="@+id/labelDateUtc"
+        app:layout_constraintTop_toBottomOf="@+id/labelDateUtc" />
+
+    <TextView
+        android:id="@+id/labelDateUtc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="Date:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textGeneralInfo" />
+
+    <TextView
+        android:id="@+id/labelRepeatedFlight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Flight repeated:"
+        app:layout_constraintStart_toStartOf="@+id/labelDateUtc"
+        app:layout_constraintTop_toBottomOf="@+id/labelName" />
+
+    <TextView
+        android:id="@+id/labelMissionStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Mission status:"
+        app:layout_constraintStart_toStartOf="@+id/labelDateUtc"
+        app:layout_constraintTop_toBottomOf="@+id/labelRepeatedFlight" />
+
+    <TextView
+        android:id="@+id/labelName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Name:"
+        app:layout_constraintStart_toStartOf="@+id/labelDateUtc"
+        app:layout_constraintTop_toBottomOf="@+id/labelIcon" />
+
+    <TextView
+        android:id="@+id/textDateUtc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        app:layout_constraintStart_toEndOf="@+id/labelRepeatedFlight"
+        app:layout_constraintTop_toTopOf="@+id/labelDateUtc" />
+
+    <TextView
+        android:id="@+id/textIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/textDateUtc"
+        app:layout_constraintTop_toTopOf="@+id/labelIcon" />
+
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/textIcon"
+        app:layout_constraintTop_toTopOf="@+id/labelName" />
+
+    <TextView
+        android:id="@+id/textRepeatedFlight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/textName"
+        app:layout_constraintTop_toTopOf="@+id/labelRepeatedFlight" />
+
+    <TextView
+        android:id="@+id/textMissionStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/textRepeatedFlight"
+        app:layout_constraintTop_toTopOf="@+id/labelMissionStatus" />
+
+    <ImageView
+        android:id="@+id/imageIcon"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textMissionStatus"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

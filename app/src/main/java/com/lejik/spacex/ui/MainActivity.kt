@@ -1,17 +1,10 @@
 package com.lejik.spacex.ui
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.recyclerview.widget.RecyclerView
 import com.lejik.spacex.R
-import com.lejik.spacex.adapter.ItemAdapter
-import com.lejik.spacex.data.DataSource
 import com.lejik.spacex.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

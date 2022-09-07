@@ -6,15 +6,6 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/nextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/forward"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/forward" />
-
-    <Button
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,6 +14,15 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/backward" />
 
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forward"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/forward" />
+
     <TextView
         android:id="@+id/textDetailInfo"
         android:layout_width="match_parent"
@@ -30,5 +30,180 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backButton" />
+
+    <TextView
+        android:id="@+id/labelName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Name:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nextButton" />
+
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/labelName" />
+
+    <TextView
+        android:id="@+id/labelIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Icon:"
+        app:layout_constraintStart_toStartOf="@+id/labelName"
+        app:layout_constraintTop_toBottomOf="@+id/labelName" />
+
+    <TextView
+        android:id="@+id/textIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/textName"
+        app:layout_constraintTop_toTopOf="@+id/labelIcon" />
+
+    <TextView
+        android:id="@+id/labelRepeatedFlight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Flight repeated:"
+        app:layout_constraintStart_toStartOf="@+id/labelDateUtc"
+        app:layout_constraintTop_toBottomOf="@+id/labelIcon" />
+
+    <TextView
+        android:id="@+id/textRepeatedFlight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/textName"
+        app:layout_constraintTop_toTopOf="@+id/labelRepeatedFlight" />
+
+    <TextView
+        android:id="@+id/labelMissionStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Mission status:"
+        app:layout_constraintStart_toStartOf="@+id/labelName"
+        app:layout_constraintTop_toBottomOf="@+id/labelRepeatedFlight" />
+
+    <TextView
+        android:id="@+id/textMissionStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/textName"
+        app:layout_constraintTop_toTopOf="@+id/labelMissionStatus" />
+
+    <TextView
+        android:id="@+id/labelDetails"
+        android:layout_width="45dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="10dp"
+        android:text="Details:"
+        app:layout_constraintStart_toStartOf="@+id/labelName"
+        app:layout_constraintTop_toBottomOf="@+id/labelMissionStatus" />
+
+    <TextView
+        android:id="@+id/textDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/textName"
+        app:layout_constraintTop_toTopOf="@+id/labelDetails" />
+
+    <TextView
+        android:id="@+id/labelDateUtc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Date:"
+        app:layout_constraintStart_toStartOf="@+id/labelName"
+        app:layout_constraintTop_toBottomOf="@+id/labelDetails" />
+
+    <TextView
+        android:id="@+id/textDateUtc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/textName"
+        app:layout_constraintTop_toTopOf="@+id/labelDateUtc" />
+
+    <ImageView
+        android:id="@+id/imageIcon"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelDateUtc"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/labelSpaceman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Spaceman:"
+        app:layout_constraintStart_toStartOf="@+id/labelName"
+        app:layout_constraintTop_toBottomOf="@+id/imageIcon" />
+
+    <TextView
+        android:id="@+id/textSpaceman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/textName"
+        app:layout_constraintTop_toTopOf="@+id/labelSpaceman" />
+
+    <TextView
+        android:id="@+id/labelAgency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Agency:"
+        app:layout_constraintStart_toStartOf="@+id/labelName"
+        app:layout_constraintTop_toBottomOf="@+id/labelSpaceman" />
+
+    <TextView
+        android:id="@+id/textAgency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/textName"
+        app:layout_constraintTop_toTopOf="@+id/labelAgency" />
+
+    <TextView
+        android:id="@+id/labelStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Status:"
+        app:layout_constraintStart_toStartOf="@+id/labelName"
+        app:layout_constraintTop_toBottomOf="@+id/labelAgency" />
+
+    <TextView
+        android:id="@+id/textStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/textName"
+        app:layout_constraintTop_toTopOf="@+id/labelStatus" />
+
+    <Button
+        android:id="@+id/missionPreviousButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/backward"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/missionNextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:text="@string/forward"
+        app:layout_constraintBottom_toBottomOf="@+id/missionPreviousButton"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
