@@ -1,6 +1,7 @@
 package com.lejik.spacex.viewmodels
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -26,4 +27,6 @@ class ViewModelLaunches(
     )
         .flow
         .cachedIn(viewModelScope)
+
 }
+

@@ -11,13 +11,13 @@ class ViewModelFactoryLaunches(
     owner: SavedStateRegistryOwner,
     private val repositoryLaunches: RepositoryLaunches
 ) : AbstractSavedStateViewModelFactory(owner, null) {
-    override fun <T : ViewModel?> create(
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel> create(
         key: String,
         modelClass: Class<T>,
         handle: SavedStateHandle
     ): T {
         if (modelClass.isAssignableFrom(ViewModelLaunches::class.java)) {
-            @Suppress("UNCHACKED_CAST")
             return ViewModelLaunches(repositoryLaunches) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

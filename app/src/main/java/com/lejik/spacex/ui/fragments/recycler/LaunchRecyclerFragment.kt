@@ -19,14 +19,17 @@ import com.lejik.spacex.adapter.AdapterLaunches
 import com.lejik.spacex.databinding.LaunchRecyclerFragmentBinding
 import com.lejik.spacex.injection.Injection
 import com.lejik.spacex.viewmodels.ViewModelLaunches
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class LaunchRecyclerFragment : Fragment() {
     private var _binding: LaunchRecyclerFragmentBinding? = null
-    private val binding: LaunchRecyclerFragmentBinding?
+    private val binding: LaunchRecyclerFragmentBinding
         get() = _binding!!
+
+    private val viewModel by viewModels<ViewModelLaunches>(
+        factoryProducer = { Injection.provideViewModelFactory(owner = this) }
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,12 +37,9 @@ class LaunchRecyclerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = LaunchRecyclerFragmentBinding.inflate(inflater)
-        val viewModel by viewModels<ViewModelLaunches>(
-            factoryProducer = { Injection.provideViewModelFactory(owner = this) }
-        )
         val items = viewModel.items
         val adapterLaunches = AdapterLaunches()
-        _binding!!.bindAdapter(adapterLaunches = adapterLaunches)
+        binding.bindAdapter(adapterLaunches = adapterLaunches)
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -52,7 +52,7 @@ class LaunchRecyclerFragment : Fragment() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 adapterLaunches.loadStateFlow.collect {
-                    binding?.apply {
+                    binding.apply {
                         prependProgress.isVisible = it.source.prepend is LoadState.Loading
                         appendProgress.isVisible = it.source.prepend is LoadState.Loading
                     }
@@ -60,12 +60,12 @@ class LaunchRecyclerFragment : Fragment() {
             }
         }
 
-        return binding!!.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.escapeButton?.setOnClickListener {
+        binding.escapeButton.setOnClickListener {
             findNavController().navigate(R.id.action_launchRecyclerFragment_to_launchGeneralInfoFragment)
         }
 

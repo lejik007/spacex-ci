@@ -24,9 +24,9 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment?
         val navController = navHostFragment?.navController
-        if (navController != null) {
-            setupActionBarWithNavController(navController)
-        }
+//        if (navController != null) {
+//            setupActionBarWithNavController(navController)
+//        }
     }
 
 

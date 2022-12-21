@@ -12,7 +12,9 @@ import androidx.navigation.fragment.findNavController
 import coil.load
 import com.lejik.spacex.R
 import com.lejik.spacex.databinding.LaunchDetailInfoFragmentBinding
+import com.lejik.spacex.model.Crew
 import com.lejik.spacex.model.Docs
+import com.lejik.spacex.network.ApiCrewServiceLaunches
 import com.lejik.spacex.network.ApiServiceLaunches
 
 class LaunchDetailInfoFragment : Fragment() {
@@ -34,10 +36,12 @@ class LaunchDetailInfoFragment : Fragment() {
         var count = 0
         var countMission = 0
         var docs: List<Docs>? = null
+        var crew: List<Crew>? = null
         lifecycleScope.launchWhenResumed {
             try {
                 Log.d("Отслеживание (детальная информация)", "Подключение к сайту")
                 docs = ApiServiceLaunches.create().getPhotos()
+                crew = ApiCrewServiceLaunches.create().getCrews()
                 countMission = docs!!.size
                 Log.d("Отслеживание (общая информация)", "val photos = ApiObject.retrofitService.getPhotos(): ${docs}")
                 binding.apply {
@@ -54,6 +58,9 @@ class LaunchDetailInfoFragment : Fragment() {
                         placeholder(R.drawable.loading_animation)
                         error(R.drawable.ic_broken_image)
                     }
+                    textSpaceman.text = "https://api.spacexdata.com/v4/crew"
+                    textAgency.text = "https://api.spacexdata.com/v4/crew"
+                    textStatus.text = "https://api.spacexdata.com/v4/crew"
                 }
             } catch (e: Exception) {
                 Log.d("Отслеживание (детальная информация)", e.message.toString())
